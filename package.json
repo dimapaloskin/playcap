@@ -1,6 +1,6 @@
 {
   "name": "playcap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Native access to speaker and microphone for Node.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
