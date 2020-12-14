@@ -7,6 +7,8 @@
 
 void create_device_info_object(napi_env env, napi_value obj, ma_device_info* deviceInfo) {
     napi_value deviceName;
+    napi_value isDefault;
+
     NAPI_CALL_NO_RETURN(env,
         napi_create_string_utf8(
             env,
@@ -15,5 +17,11 @@ void create_device_info_object(napi_env env, napi_value obj, ma_device_info* dev
             &deviceName));
 
     NAPI_CALL_NO_RETURN(env,
+        napi_get_boolean(env, deviceInfo->isDefault, &isDefault));
+
+    NAPI_CALL_NO_RETURN(env,
         napi_set_named_property(env, obj, "name", deviceName));
+
+    NAPI_CALL_NO_RETURN(env,
+        napi_set_named_property(env, obj, "isDefault", isDefault));
 }
