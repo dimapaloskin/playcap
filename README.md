@@ -152,7 +152,7 @@ We just copy numbers from one input channel to *N* output channels, that's it.
   
 ---
 
-### DeviceInfo
+#### DeviceInfo
   - `name: string` - device name
   - `isDefault: boolean` - device is the default device
 ---
