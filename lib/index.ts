@@ -8,6 +8,7 @@ export enum DeviceType {
 
 export type DeviceInfo = {
   name: string;
+  isDefault: boolean;
 }
 
 export type DeviceOptions = {
