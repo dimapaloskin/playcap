@@ -127,7 +127,7 @@ We just copy numbers from one input channel to *N* output channels, that's it.
   none
   
 **Methods**:
-  - `getDevices(): DeviceInfo` - returns list of devices
+  - `getDevices(): DeviceInfo[]` - returns list of devices
   - `refreshDevices(): void` - refresh list of devices
   - `createDevice(options: DeviceOptions, dataCallback: DataCallback): Device` - returns `Device` instance
   
@@ -150,6 +150,11 @@ We just copy numbers from one input channel to *N* output channels, that's it.
   - `captureDeviceIndex: number` - index of capture device. The list of devices can be obtained by `getDevices` method. Decided automatically if not specified
   - `deviceType: DeviceType` - device type: `Playback`, `Capture` or `Duplex`
   
+---
+
+### DeviceInfo
+  - `name: string` - device name
+  - `isDefault: boolean` - device is the default device
 ---
 
 #### DataCallback
