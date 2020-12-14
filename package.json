@@ -11,7 +11,8 @@
     "rebuild": "node-gyp rebuild",
     "dev": "node-gyp --debug configure build",
     "js:build": "tsc --build tsconfig.json",
-    "build:all": "npm run configure && npm run rebuild && npm run js:build"
+    "build:all": "npm run configure && npm run rebuild && npm run js:build",
+    "prepublishOnly": "npm run build:all"
   },
   "author": "Dmitry Pavlovsky",
   "keywords": [
