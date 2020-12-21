@@ -117,6 +117,7 @@ We just copy numbers from one input channel to *N* output channels, that's it.
 #### Exports
   - `Context`
   - `DeviceType`
+  - `Backend`
 
 #### Context
 
