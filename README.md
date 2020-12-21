@@ -9,10 +9,10 @@ Playcap working only with 32-bit floating-point format with `[-1; 1]` range.
 
 ## Roadmap
 
-- add the ability to stop (basically pause) device
-- add the ability to select a backend
-- add the ability to enable metadata for data callback(e.g. sampleRate, delta, currentTime)
-- add the ability to use fixed sample buffer size
+- [x] add the ability to select a backend
+- [ ] add the ability to stop (basically pause) device
+- [ ] add the ability to enable metadata for data callback(e.g. sampleRate, delta, currentTime)
+- [ ] add the ability to use fixed sample buffer size
 
 ## Installation
 
@@ -66,7 +66,7 @@ You can notice several concepts in this code.  First of all, it is `Context`. It
 
 The overall chain is quite simple. We create `Context`, then we create a `Device` based on `Context` and pass `data callback` (the function which will process audio) to the created device.
 
-The `data callback` is a function that takes `input` in `output`. And the input and output are just arrays of `Float32Array`. Each `Float32Array` represents the audio channel,  so the `output` array for 2 channels device will contain two `Float32Array` elements. You can notice that we don't have any information about the device in data callback (e.g. sample rate, delta, current time), so you can manage it manually (it will be probably added in future versions). For now, it is also impossible to specify an audio backend for `Context`, but this problem in the roadmap.
+The `data callback` is a function that takes `input` in `output`. And the input and output are just arrays of `Float32Array`. Each `Float32Array` represents the audio channel,  so the `output` array for 2 channels device will contain two `Float32Array` elements. You can notice that we don't have any information about the device in data callback (e.g. sample rate, delta, current time), so you can manage it manually (it will be probably added in future versions).
 
 ### Dealing with device types
 
@@ -74,7 +74,7 @@ There are three device types:
   - Playback
   - Capture
   - Duplex
- 
+
 We have already met the first of them. The `Playback` device type means we are not interesting inputs, so it always will be zeros in the input`Float32Array`.
 
 
@@ -120,17 +120,17 @@ We just copy numbers from one input channel to *N* output channels, that's it.
 
 #### Context
 
-`new Context(): Context`
+`new Context(backend: Backend): Context`
 
 **Options**:
 
-  none
-  
+  - `backend: Backend` - backend type
+
 **Methods**:
   - `getDevices(): DeviceInfo[]` - returns list of devices
   - `refreshDevices(): void` - refresh list of devices
   - `createDevice(options: DeviceOptions, dataCallback: DataCallback): Device` - returns `Device` instance
-  
+
 **Returns**: `Context` instance
 
 ---
@@ -139,7 +139,26 @@ We just copy numbers from one input channel to *N* output channels, that's it.
   - `DeviceType.Playback`
   - `DeviceType.Capture`
   - `DeviceType.Duplex`
-    
+
+---
+
+#### Backend
+  - `Backend.Wasapi`
+  - `Backend.Dsound`
+  - `Backend.Winmm`
+  - `Backend.Coreaudio`
+  - `Backend.Sndio`
+  - `Backend.Audio4`
+  - `Backend.Oss`
+  - `Backend.Pulseaudio`
+  - `Backend.Alsa`
+  - `Backend.Jack`
+  - `Backend.Aaudio`
+  - `Backend.Opensl`
+  - `Backend.Webaudio`
+  - `Backend.Custom`
+  - `Backend.Null`
+
 ---
 
 #### DeviceOptions
@@ -149,7 +168,7 @@ We just copy numbers from one input channel to *N* output channels, that's it.
   - `playbackDeviceIndex: number` - index of playback device. The list of devices can be obtained by `getDevices` method. Decided automatically if not specified
   - `captureDeviceIndex: number` - index of capture device. The list of devices can be obtained by `getDevices` method. Decided automatically if not specified
   - `deviceType: DeviceType` - device type: `Playback`, `Capture` or `Duplex`
-  
+
 ---
 
 #### DeviceInfo

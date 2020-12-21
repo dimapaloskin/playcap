@@ -6,6 +6,24 @@ export enum DeviceType {
   Duplex = 3,
 };
 
+export enum Backend {
+  Wasapi = 0,
+  Dsound = 1,
+  Winmm = 2,
+  Coreaudio = 3,
+  Sndio = 4,
+  Audio4 = 5,
+  Oss = 6,
+  Pulseaudio = 7,
+  Alsa = 8,
+  Jack = 9,
+  Aaudio = 10,
+  Opensl = 11,
+  Webaudio = 12,
+  Custom = 13,
+  Null = 14,
+};
+
 export type DeviceInfo = {
   name: string;
   isDefault: boolean;
