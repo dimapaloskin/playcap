@@ -1,6 +1,10 @@
 #include <assert.h>
 #include <node_api.h>
 
+#define MA_NO_WAV
+#define MA_NO_MP3
+#define MA_NO_FLAC
+
 #define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
 
