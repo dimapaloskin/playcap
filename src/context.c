@@ -51,7 +51,7 @@ napi_value Context_constructor(napi_env env, napi_callback_info info)
     } else {
         ma_backend backends[1] = {};
         NAPI_CALL(env,
-            napi_get_value_uint32(env, argv[0], (uint32_t)&backends[0]));
+            napi_get_value_uint32(env, argv[0], (uint32_t*)&backends[0]));
 
         MA_CALL(env, "Unable to initialize context",
             ma_context_init(&backends[0], 1, NULL, &context->maContext));
